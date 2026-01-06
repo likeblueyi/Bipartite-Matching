@@ -1,8 +1,14 @@
 # Bipartite Matching and Its End-to-End Combinatorial Optimization Strategy
+## Preface
+Given the large number of formulas in this project, we recommend reading this README.md in a local Markdown editor to prevent display issues on platforms like GitHub. Next, we will introduce how to run the project's source code:
+(i) Unzip the compressed package `main.zip`;
+(ii) Directly run the file at the path `\rethink_exp\test programing.py`;
+(iii)Select the baseline method as prompted to complete the model training, validation and testing operations.
+
 ## Problem Introduction
 **Problem Background:** Graph  Bipartite Matching, a fundamental problem in social network analytics, findssextensive real-world applications, such as facilitating online job-seeking and friend-recommendation services. A critical challenge emerges when the edge relationships among nodes are only partially observable or entirely unknown. In such cases, it becomes imperative to perform predictive inference on edge connectivity prior to executing the matching process.  
  
-**Prediction Phase:** For each pair of nodes \((i, j)\), given their respective feature representations \(\mathbf{x}^i \in \mathbb{R}^d\) and \(\mathbf{x}^j \in \mathbb{R}^d\) (where \(d\) denotes the dimensionality of the node features), the task is to predict the presence or absence of an edge between these two nodes. We define a binary indicator variable \(y^{ij} \in \{0, 1\}\), where \(y^{ij} = 1\) signifies the existence of an edge and \(y^{ij} = 0\) indicates its absence. The predictive process is shown as below:
+**Prediction Phase:** For each pair of nodes $(i, j)$, given their respective feature representations $\mathbf{x}^i \in \mathbb{R}^d$ and $\mathbf{x}^j \in \mathbb{R}^d$ (where $d$ denotes the dimensionality of the node features), the task is to predict the presence or absence of an edge between these two nodes. We define a binary indicator variable $y^{ij} \in \{0, 1\}$, where $y^{ij} = 1$ signifies the existence of an edge and $y^{ij} = 0$ indicates its absence. The predictive process is shown as below:
  
  
 **Decision Phase:** The bipartite matching problem can be formulated as an integer linear programming problem subject to permutation constraints. Let $\mathbf{y} \in \mathbb{R}^{N \times N}$ denote the adjacency matrix (which can be either the ground - truth matrix or a predicted one), and $\mathbf{v} \in \mathbb{R}^{N \times N}$ represent the binary matching matrix, where the entry $v^{ij} = 1$ indicates that node $i$ is matched to node $j$. The optimization objective aims to maximize the total matching score while satisfying the permutation constraints, which is formulated as below. 
@@ -25,7 +31,7 @@ Mandi et al. (2022) t take \( \mathbb{S} \setminus \{\mathbf{v}^*(c)\} \) as neg
 $$
 \mathcal{L}_{\text{NCE}}(\hat{c}, c)=\frac{1}{|\mathbb{S}|}\sum_{\mathbf{v} \in \mathbb{S}}\left(f(\mathbf{v}^*(c), \hat{\mathbf{c}}) - f(\mathbf{v}, \hat{\mathbf{c}})\right)
 $$
-The novelty lies in the above formula being differentiable without solving the optimization problem. Moreover, if solutions in \( \mathbb{S}\) are optimal for arbitrary cost vectors, this approach is equivalent to training within a region of the convex hull of \( \mathbb{V} \).
+The novelty lies in the above formula being differentiable without solving the optimization problem. Moreover, if solutions in $\mathbb{S}$ are optimal for arbitrary cost vectors, this approach is equivalent to training within a region of the convex hull of $\mathbb{V}$.
 
 **CpLayer**
 Agrawal et al. (2019)  propose an approach to differentiate through disciplined convex programs (a subset of convex optimization problems used in domain-specific languages). Introducing disciplined parametrized programming (a subset of disciplined convex programming), they show every such program can be represented as composing an affine map from parameters to problem data, a solver, and an affine map from solver solution to original problem solution.
@@ -92,4 +98,4 @@ $
 | LODL            | 91.113              |
 | NCE             | 92.662              |
 | Org-LTR         | 91.0.35             |
-| SAA-LTR (ours)  | $\textbf{\underline{88.211}}$|
+| SAA-LTR (ours)  | **88.211** |

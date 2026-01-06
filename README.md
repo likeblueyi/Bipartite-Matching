@@ -15,7 +15,7 @@ Given the large number of formulas in this project, we recommend reading this RE
 $$\mathbf{v}^*(\mathbf{y})=\arg\max_{\mathbf{v} \in \mathcal{\mathbb{V}}} \sum_{i = 1}^{N} \sum_{j = 1}^{N} y^{ij}v^{ij}$$
 
 $$\text{subject to: }\mathbf{v}\mathbf{1}=\mathbf{1}, \quad \mathbf{v}^\top\mathbf{1}=\mathbf{1}. $$
- In the above, enforces that \(\mathbf{v}\) is a permutation matrix. This means that each row and each column of \(\mathbf{v}\) contains exactly one non - zero entry (representing a unique matching). 
+ In the above, enforces that $mathbf{v}$ is a permutation matrix. This means that each row and each column of \(\mathbf{v}\) contains exactly one non - zero entry (representing a unique matching). 
 
 **Dataset and License:** We employ the Cora citation network as the benchmark dataset for graph matching experiments. In this network, each node corresponds to a scholarly paper, and the node features are derived from a bag-of-words representation, resulting in a 1433-dimensional feature vector for each node. We partition the entire graph into 27 sub-graph instances. Each instance consists of 100 nodes and corresponds to a bipartite matching problem with a cardinality constraint of 50 (i.e., there are 50 edges in each valid matching). The Cora dataset is widely used in numerous research endeavors within the domain of graph learning. Based on our verification, it is released under the Creative Commons Attribution 4.0 International (CC BY 4.0) License. This license permits scholarly reuse, modification, and distribution of the dataset, provided that appropriate attribution is given to the original authors.
 
